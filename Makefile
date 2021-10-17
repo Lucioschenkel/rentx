@@ -7,3 +7,5 @@ start:
 logs:
 	sudo docker logs rentalx -f
 
+login:
+	sudo docker-compose exec app /bin/bash

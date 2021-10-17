@@ -1,5 +1,6 @@
-import fs from 'fs';
 import csvParse from 'csv-parse';
+import fs from 'fs';
+
 import { ICategoriesRepository } from '../../repositories/ICategoriesRepository';
 
 interface IImportCategory {
@@ -44,7 +45,7 @@ export class ImportCategoryUseCase {
       const existsCategory = this.categoriesRepository.findByName(name);
 
       if (!existsCategory) {
-        this.categoriesRepository.create({
+        await this.categoriesRepository.create({
           name,
           description,
         });
