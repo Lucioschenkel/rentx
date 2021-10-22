@@ -1,5 +1,14 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryColumn,
+} from 'typeorm';
 import { v4 as uuidv4 } from 'uuid';
+
+import { Category } from './Category';
 
 @Entity({ name: 'cars' })
 export class Car {
@@ -27,7 +36,8 @@ export class Car {
   @Column()
   brand: string;
 
-  @Column()
+  @ManyToOne(() => Category)
+  @JoinColumn({ name: 'category_id' })
   category_id: string;
 
   @CreateDateColumn()
