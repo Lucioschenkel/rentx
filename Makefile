@@ -1,11 +1,16 @@
+.PHONY: build start logs login down
+
 build:
-	sudo docker-compose build
+	docker-compose build
+
+down:
+	docker-compose down
 
 start:
-	sudo docker-compose up -d
+	docker-compose up -d
 
 logs:
-	sudo docker logs rentx -f
+	docker logs rentx -f
 
 login:
-	sudo docker-compose exec app /bin/bash
+	docker-compose exec app /bin/bash
