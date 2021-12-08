@@ -5,3 +5,4 @@ tmp/avatar
 !tmp/.gitkeep
 !tmp/avatar/.gitkeep
 package-lock.json
+.env
