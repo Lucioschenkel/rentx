@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 
+import { CarsRepositoryInMemory } from '@modules/cars/repositories/in-memory/CarsRepositoryInMemory';
 import { RentalsRepositoryInMemory } from '@modules/rentals/repositories/in-memory/RentalsRepositoryInMemory';
 import { DayJsDateProvider } from '@shared/container/providers/DateProvider/implementations/DayJsDateProvider';
 import { AppError } from '@shared/errors/AppError';
@@ -12,6 +13,7 @@ dayjs.extend(utc);
 let createRentalUseCase: CreateRentalUseCase;
 let rentalsRepositoryInMemory: RentalsRepositoryInMemory;
 let dayjsDateProvider: DayJsDateProvider;
+let carsRepositoryInMemory: CarsRepositoryInMemory;
 
 describe('Create Rental', () => {
   // eslint-disable-next-line no-underscore-dangle
@@ -22,7 +24,8 @@ describe('Create Rental', () => {
     dayjsDateProvider = new DayJsDateProvider();
     createRentalUseCase = new CreateRentalUseCase(
       rentalsRepositoryInMemory,
-      dayjsDateProvider
+      dayjsDateProvider,
+      carsRepositoryInMemory
     );
   });
 
