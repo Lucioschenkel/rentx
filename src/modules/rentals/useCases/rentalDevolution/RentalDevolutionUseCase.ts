@@ -39,9 +39,8 @@ export class RentalDevolutionUseCase {
       daily = minimum_rental_days;
     }
 
-    const delay = this.dateProvider.diffInDays(
-      now,
-      rental.expected_return_date
+    const delay = Math.abs(
+      this.dateProvider.diffInDays(now, rental.expected_return_date)
     );
 
     let total = 0;
